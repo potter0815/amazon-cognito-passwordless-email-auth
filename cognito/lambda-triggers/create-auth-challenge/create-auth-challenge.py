@@ -1,10 +1,9 @@
 
 import boto3
-# generate random integer values
-from random import seed
-from random import randint
+import secrets
 import os
 import json
+import string
 
 localtest = False
 
@@ -31,12 +30,10 @@ def handler(event, context):
 
         # This is a new auth session
         # Generate a new secret login code and mail it to the user
-        # seed random number generator
-        seed(763437)        
-        secretLoginCode = randint(6, 6)
-
+        alphabet = string.digits
+        secretLoginCode = ''.join(secrets.choice(alphabet) for i in range(6))  
         sendEmail(event['request']['userAttributes']['email'], secretLoginCode)
-        print('if:.....')
+        print('secretLoginCode:' + secretLoginCode)
     else:
         # There's an existing session. Don't generate new digits but
         # re-use the code from the current session. This allows the user to
