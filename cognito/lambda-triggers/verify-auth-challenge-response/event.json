@@ -1,0 +1,20 @@
+//2019-11-21T02:13:07.197Z	c04cee0a-7f40-4d6a-997e-0f56f7a0f393	INFO	event:  
+{ version: '1',
+    region: 'eu-west-1',
+    userPoolId: 'eu-west-1_qIlbFSMDh',
+    userName: 'b6319d5d-a2aa-4f1e-9727-3e396e9f58ea',
+    callerContext:
+     { awsSdkVersion: 'aws-sdk-unknown-unknown',
+       clientId: '3c2tedkkb0j0fjcqkuuho19sk8' },
+    triggerSource: 'VerifyAuthChallengeResponse_Authentication',
+    request:
+     { userAttributes:
+        { sub: 'b6319d5d-a2aa-4f1e-9727-3e396e9f58ea',
+          email_verified: 'true',
+          'cognito:user_status': 'CONFIRMED',
+          'cognito:email_alias': 'cs@system32.de',
+          name: 'Christoph Schmitter cs',
+          email: 'cs@system32.de' },
+       privateChallengeParameters: { secretLoginCode: '523861' },
+       challengeAnswer: '523861' },
+    response: { answerCorrect: null } }

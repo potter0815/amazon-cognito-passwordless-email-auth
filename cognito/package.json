@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cd ./lambda-triggers/create-auth-challenge && npm i && cd -",
-    "package": "tsc && sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket ${S3_BUCKET_NAME}",
-    "deploy": "sam deploy --template-file packaged.yaml --capabilities CAPABILITY_IAM --stack-name ${STACK_NAME} --parameter-overrides SESFromAddress=${SES_FROM_ADDRESS} UserPoolName=${USER_POOL_NAME}",
-    "check-env": "if [ -e ${S3_BUCKET_NAME} ] || [ -e ${USER_POOL_NAME} ] || [ -e ${STACK_NAME} ] || [ -e ${SES_FROM_ADDRESS} ]; then exit 1; fi",
-    "bd": "npm run check-env && npm run package && npm run deploy",
+    "package": "tsc && sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket cognito-mfa-deployments",
+    "deploy": "sam deploy --template-file packaged.yaml --capabilities CAPABILITY_IAM --stack-name cognito-passwordless-email-samcli-11-2019 --parameter-overrides SESFromAddress=csc+cognito_e-mail_auth_backend@amazon.de UserPoolName=cognito-mfa-test",
+    "check-env2": "if [ ! -v ${S3_BUCKET_NAME} ] || [ ! -v ${USER_POOL_NAME} ] || [ ! -v ${STACK_NAME} ] || [ ! -v ${SES_FROM_ADDRESS} ]; then exit 1; fi",
+    "bd2": "npm run package && npm run deploy",
     "publish": "npm run package && sam publish -t packaged.yaml --region us-east-1"
   },
   "keywords": [],

@@ -69,7 +69,7 @@ Resources:
     Properties:
       CodeUri: lambda-triggers/pre-sign-up/
       Handler: pre-sign-up.handler
-      Runtime: nodejs10.x
+      Runtime: python3.7
 
   UserPool:
     Type: "AWS::Cognito::UserPool"

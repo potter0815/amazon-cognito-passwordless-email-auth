@@ -1,0 +1,19 @@
+//PreSignUp
+//2019-11-21T02":12":42.751Z	a893cd0f-21eb-4bc2-a21a-08013e9c9b7c	INFO	event":  
+{ "version": "1",
+    "region": "eu-west-1",
+    "userPoolId": "eu-west-1_qIlbFSMDh",
+    "userName": "b6319d5d-a2aa-4f1e-9727-3e396e9f58ea",
+    "callerContext":
+     { "awsSdkVersion": "aws-sdk-unknown-unknown",
+       "clientId": "3c2tedkkb0j0fjcqkuuho19sk8" },
+    "triggerSource": "PreSignUp_SignUp",
+    "request":
+     { "userAttributes": { "name": "Christoph Schmitter cs", "email": "cs@system32.de" },
+       "validationData": null },
+    "response":
+     { "autoConfirmUser": false,
+       "autoVerifyEmail": false,
+       "autoVerifyPhone": false 
+    } 
+}

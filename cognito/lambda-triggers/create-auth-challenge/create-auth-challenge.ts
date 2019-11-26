@@ -6,6 +6,7 @@ import { randomDigits } from 'crypto-secure-random-digit';
 import { SES } from 'aws-sdk';
 
 const ses = new SES();
+//const util = new util();
 
 export const handler: CognitoUserPoolTriggerHandler = async event => {
 
