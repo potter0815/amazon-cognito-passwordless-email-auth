@@ -33,7 +33,6 @@ def handler(event, context):
         alphabet = string.digits
         secretLoginCode = ''.join(secrets.choice(alphabet) for i in range(6))  
         sendEmail(event['request']['userAttributes']['email'], secretLoginCode)
-        print('secretLoginCode:' + secretLoginCode)
     else:
         # There's an existing session. Don't generate new digits but
         # re-use the code from the current session. This allows the user to
@@ -42,10 +41,7 @@ def handler(event, context):
         #const previousChallenge = event['request']['session'].slice(-1)[0];
         # JS: secretLoginCode = previousChallenge.challengeMetadata!.match(/CODE-(\d*)/)![1];
         previousChallenge = event['request']['session'][0]  
-        secretLoginCode = previousChallenge['challengeMetadata'][5:11]    
-        print('secretLoginCode {}'.format(secretLoginCode))
-        print('else:.....')
-    
+        secretLoginCode = previousChallenge['challengeMetadata'][5:11]       
 
     # This is sent back to the client app
     event['response']['publicChallengeParameters'] = { 'email': event['request']['userAttributes']['email'] }
@@ -56,7 +52,7 @@ def handler(event, context):
     
     # Add the secret login code to the session so it is available
     # in a next invocation of the "Create Auth Challenge" trigger
-    event['response']['challengeMetadata'] = "CODE-{}",format(secretLoginCode)
+    event['response']['challengeMetadata'] = "CODE-{}".format(secretLoginCode)
     
     print('event_out: {}'.format(json.dumps(event)))
     return event
