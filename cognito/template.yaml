@@ -38,7 +38,7 @@ Resources:
     Properties:
       CodeUri: lambda-triggers/define-auth-challenge/
       Handler: define-auth-challenge.handler
-      Runtime: nodejs10.x
+      Runtime: python3.8
 
   CreateAuthChallenge:
     Type: AWS::Serverless::Function
@@ -69,7 +69,7 @@ Resources:
     Properties:
       CodeUri: lambda-triggers/pre-sign-up/
       Handler: pre-sign-up.handler
-      Runtime: python3.7
+      Runtime: python3.8
 
   UserPool:
     Type: "AWS::Cognito::UserPool"
