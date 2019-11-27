@@ -38,8 +38,6 @@ def handler(event, context):
         # re-use the code from the current session. This allows the user to
         # make a mistake when keying in the code and to then retry, rather
         # the needing to e-mail the user an all new code again.    
-        #const previousChallenge = event['request']['session'].slice(-1)[0];
-        # JS: secretLoginCode = previousChallenge.challengeMetadata!.match(/CODE-(\d*)/)![1];
         previousChallenge = event['request']['session'][0]  
         secretLoginCode = previousChallenge['challengeMetadata'][5:11]       
 
@@ -52,9 +50,9 @@ def handler(event, context):
     
     # Add the secret login code to the session so it is available
     # in a next invocation of the "Create Auth Challenge" trigger
-    event['response']['challengeMetadata'] = "CODE-{}".format(secretLoginCode)
+    event['response']['challengeMetadata'] = f"CODE-{secretLoginCode}"
     
-    print('event_out: {}'.format(json.dumps(event)))
+    print(f'event_out: {json.dumps(event)}')
     return event
 
 
