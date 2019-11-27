@@ -60,10 +60,6 @@ def handler(event, context):
 
 def sendEmail(emailAddress, secretLoginCode):
 
-    dataTxt = "Your secret login code: {}".format(secretLoginCode)
-    dataHtml = "<html><body><p>This is your secret login code:</p><h3>{}</h3></body></html>".format(secretLoginCode)
-
-
     boto3.client('ses').send_email(
         Source=SES_FROM_ADDRESS,
         Destination={
@@ -73,11 +69,11 @@ def sendEmail(emailAddress, secretLoginCode):
             'Body': {
                 'Html': {
                     'Charset': 'UTF-8',
-                    'Data': dataHtml
+                    'Data': f"<html><body><p>This is your secret login code:</p><h3>{secretLoginCode}</h3></body></html>"
                 },
                 'Text': {
                     'Charset': 'UTF-8',
-                    'Data': dataTxt
+                    'Data': f"Your secret login code: {secretLoginCode}"
                 }
             },
             'Subject': {
